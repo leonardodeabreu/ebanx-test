@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Entities;
+namespace Ebanx\Models;
 
-class User
+use Ebanx\Includes\Table;
+
+class User extends Table
 {
+    protected $table = 'user';
+
     private $id;
     private $login;
     private $email;
     private $password;
-
-    public function __construct()
-    {
-        //
-    }
 
     public function getId()
     {
@@ -48,7 +47,5 @@ class User
     {
         $this->password = $password;
     }
-
-
 
 }
