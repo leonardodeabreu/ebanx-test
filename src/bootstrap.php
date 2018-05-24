@@ -37,6 +37,7 @@ $routeDefinitionCallback = function (\FastRoute\RouteCollector $r) {
 };
 
 $dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
+
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
 switch ($routeInfo[0]) {
     case \FastRoute\Dispatcher::NOT_FOUND:
@@ -51,8 +52,14 @@ switch ($routeInfo[0]) {
         $className = $routeInfo[1][0];
         $method = $routeInfo[1][1];
         $vars = $routeInfo[2];
+
         $class = $injector->make($className);
         $class->$method($vars);
         break;
+
 }
 
+foreach ($response->getHeaders() as $header) {
+    header($header, false);
+}
+echo $response->getContent();

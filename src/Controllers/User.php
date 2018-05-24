@@ -4,9 +4,9 @@ namespace Ebanx\Controllers;
 
 use Http\Request;
 use Http\Response;
-use Ebanx\View\Renderer;
+use Ebanx\Views\Renderer;
 
-class UserController
+class User
 {
     private $request;
     private $response;
@@ -24,17 +24,8 @@ class UserController
         $data = [
             'name' => $this->request->getParameter('name', 'stranger'),
         ];
-        $html = $this->renderer->render('UserController', $data);
+        $html = $this->renderer->render('User', $data);
         $this->response->setContent($html);
     }
 
-    /*public function verifyUserExists($_array)
-    {
-        $user = new Entities\User();
-        $user->setLogin($_array[0]);
-        $user->setPassword($_array[1]);
-
-        $userRepo = new Repositories\UserRepository();
-        // $userRepo
-    }*/
 }

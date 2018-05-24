@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Ebanx\View;
+namespace Ebanx\Views;
 
 use Mustache_Engine;
 
