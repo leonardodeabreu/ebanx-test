@@ -10,8 +10,10 @@ class User extends Action
 
     public function login()
     {
-        $model = Container::getClass($this->model);
-        echo "<h1>leooo</h1>";
+        //$model = Container::getClass($this->model);
+
+        $this->view->index  = 'teste leonardo';
+        $this->render('login');
     }
 
 

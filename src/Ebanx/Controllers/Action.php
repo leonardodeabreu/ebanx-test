@@ -15,10 +15,11 @@ abstract class Action
     protected function render($view, $layout=true)
     {
         $this->action = $view;
-        if ($layout && file_exists("../Views/layout.phtml")) {
-            include_once '../Views/layout.phtml';
+
+        if ($layout && file_exists(__DIR__ . "/../Views/layout.phtml")) {
+            include_once __DIR__ .'/../Views/layout.phtml';
         } else {
-            $this->content($view);
+            $this->content();
         }
     }
 
@@ -26,7 +27,7 @@ abstract class Action
     {
         $atual = get_class($this);
         $singleClassName = strtolower(str_replace("Ebanx\\Controllers\\", "", $atual));
-        include_once '../src/Ebanx/Views/' . $singleClassName . '/' . $this->action . '.phtml';
+        include_once __DIR__ . '/../Views/' . $singleClassName . '/' . $this->action . '.phtml';
     }
 
 }

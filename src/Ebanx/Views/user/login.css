@@ -4,8 +4,7 @@ body {
     background-color: #eee;
 
 }
-.btn
-{
+.btn {
     outline:0;
     border:none;
     border-top:none;
@@ -14,8 +13,7 @@ body {
     border-right:none;
     box-shadow:inset 2px -3px rgba(0,0,0,0.15);
 }
-.btn:focus
-{
+.btn:focus {
     outline:0;
     -webkit-outline:0;
     -moz-outline:0;
