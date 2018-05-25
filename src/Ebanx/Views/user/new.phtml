@@ -1,0 +1,67 @@
+<style type="text/css">
+    .login-form {
+        width: 840px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+
+<script type="application/javascript">
+    function validate()
+    {
+        let bloquear = false;
+
+        if ($("[name='password']").val() != $("[name='re-password']").val()) {
+            alert('Os campos de senha devem ser o mesmo!')
+            bloquear = true;
+            return;
+        }
+
+        if (!bloquear)
+            $("#formRegister").submit();
+    }
+
+</script>
+
+<div class="login-form">
+    <form id="formRegister" action="/user-register" method="post">
+        <h2 class="text-center">Cadastro de Usuário</h2>
+        <div class="form-group">
+            <input name="name" type="text" class="form-control" placeholder="Nome" required="required">
+        </div>
+        <div class="form-group">
+            <input name="login" type="text" class="form-control" placeholder="Login" required="required">
+        </div>
+        <div class="form-group">
+            <input name="email" type="email" class="form-control" placeholder="E-mail" required="required">
+        </div>
+        <div class="form-group">
+            <input name="password" type="password" class="form-control" placeholder="Senha" required="required">
+        </div>
+        <div class="form-group">
+            <input name="re-password" type="password" class="form-control" placeholder="Confirmar Senha" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" onclick="validate()">Cadastrar</button>
+        </div>
+    </form>
+    <a href="/">
+        <button class="btn btn-danger btn-block">Voltar</button>
+    </a>
+</div>

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace Ebanx;
 
@@ -8,12 +8,10 @@ class Init extends Bootstrap
 {
     protected function initRoutes()
     {
-        $ar['user-login'] = ['route' => '/ebanx/', 'controller' => 'user', 'action' => 'login'];
-        $ar['user-novo'] = ['route' => '/conta-bancaria/novo', 'controller' => 'index', 'action' => 'novo'];
-        $ar['user-edit'] = ['route' => '/conta-bancaria/edit', 'controller' => 'index', 'action' => 'edit'];
-        $ar['user-delete'] = ['route' => '/conta-bancaria/delete', 'controller' => 'index', 'action' => 'delete'];
-        $ar['user-list'] = ['route' => '/conta-bancaria/delete', 'controller' => 'index', 'action' => 'delete'];
-//echo "<pre>" . print_r($ar,true);
+        $ar['user-login'] = ['route' => '/', 'controller' => 'user', 'action' => 'login'];
+        $ar['user-new'] = ['route' => '/user-new', 'controller' => 'user', 'action' => 'new'];
+        $ar['user-register'] = ['route' => '/user-register', 'controller' => 'user', 'action' => 'register'];
+//echo "<pre>" . print_r($ar,true);die();
         $this->setRoutes($ar);
     }
 }

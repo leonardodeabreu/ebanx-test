@@ -42,9 +42,42 @@ abstract class Table
 
     }
 
-    public function create()
+    public function create(array $data): int
     {
+        try {
+            $sql = $this->buildInsert($data);
+            $statement = $this->database->prepare($sql);
 
+            $index = 1;
+            foreach ($data as $value)
+            {
+                $statement->bindValue($index, $value);
+                $index++;
+            }
+
+            $statement->execute();
+
+            return $this->database->lastInsertId();
+        } catch (\PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+        }
+    }
+
+    public function buildInsert(array $data): string
+    {
+        $columns = "";
+        $values = "";
+
+        foreach ($data as $column => $value)
+        {
+            $columns .= $column . ', ';
+            $values .= '?, ';
+        }
+
+        $columns = (substr($columns, -2) == ', ') ? trim(substr($columns, 0, (strlen($columns) - 2))) : $columns ;
+        $values = (substr($values, -2) == ', ') ? trim(substr($values, 0, (strlen($values) - 2))) : $values ;
+
+        return  trim("INSERT INTO " . $this->getTable()." (" . $columns . ") VALUES (" . $values . ")");
     }
 
 }

@@ -19,7 +19,7 @@ abstract class Action
         if ($layout && file_exists(__DIR__ . "/../Views/layout.phtml")) {
             include_once __DIR__ .'/../Views/layout.phtml';
         } else {
-            $this->content();
+            $this->content($view);
         }
     }
 

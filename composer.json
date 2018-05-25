@@ -16,5 +16,8 @@
     "psr-4": {
       "Ebanx\\": "src/Ebanx"
     }
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }

@@ -9,9 +9,12 @@ class User extends Table
     protected $table = 'user';
 
     private $id;
+    private $name;
     private $login;
-    private $email;
     private $password;
+    private $email;
+    private $created_at;
+    private $updated_at;
 
     public function getId()
     {
@@ -46,6 +49,36 @@ class User extends Table
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt($updated_at)
+    {
+        $this->updated_at = $updated_at;
     }
 
 }
