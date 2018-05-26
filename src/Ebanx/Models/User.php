@@ -81,4 +81,21 @@ class User extends Table
         $this->updated_at = $updated_at;
     }
 
+    //
+
+    public function verifyUser(array $_login): bool
+    {
+        $sql = "SELECT * FROM user WHERE login = :login AND password = :password";
+        $statement = $this->database->prepare($sql);
+        $statement->bindParam(':login', $_login['login']);
+        $statement->bindParam(':password', $_login['password']);
+        $statement->execute();
+
+        if ($statement->rowCount() > 0)
+            return true;
+
+        return false;
+    }
+
+
 }

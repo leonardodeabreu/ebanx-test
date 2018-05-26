@@ -49,8 +49,7 @@ abstract class Table
             $statement = $this->database->prepare($sql);
 
             $index = 1;
-            foreach ($data as $value)
-            {
+            foreach ($data as $value) {
                 $statement->bindValue($index, $value);
                 $index++;
             }
@@ -68,16 +67,15 @@ abstract class Table
         $columns = "";
         $values = "";
 
-        foreach ($data as $column => $value)
-        {
+        foreach ($data as $column => $value) {
             $columns .= $column . ', ';
             $values .= '?, ';
         }
 
-        $columns = (substr($columns, -2) == ', ') ? trim(substr($columns, 0, (strlen($columns) - 2))) : $columns ;
-        $values = (substr($values, -2) == ', ') ? trim(substr($values, 0, (strlen($values) - 2))) : $values ;
+        $columns = (substr($columns, -2) == ', ') ? trim(substr($columns, 0, (strlen($columns) - 2))) : $columns;
+        $values = (substr($values, -2) == ', ') ? trim(substr($values, 0, (strlen($values) - 2))) : $values;
 
-        return  trim("INSERT INTO " . $this->getTable()." (" . $columns . ") VALUES (" . $values . ")");
+        return trim("INSERT INTO " . $this->getTable() . " (" . $columns . ") VALUES (" . $values . ")");
     }
 
 }

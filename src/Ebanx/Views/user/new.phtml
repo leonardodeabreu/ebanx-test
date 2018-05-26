@@ -27,10 +27,19 @@
     {
         let bloquear = false;
 
+
+        if ($("[name='login']").val() == '' || $("[name='password']").val() == '') {
+            alert('Os camos de login e senha são obrigatórios!')
+            bloquear = true
+            return
+        }
+
         if ($("[name='password']").val() != $("[name='re-password']").val()) {
             alert('Os campos de senha devem ser o mesmo!')
-            bloquear = true;
-            return;
+            $("[name='password']").val('')
+            $("[name='re-password']").val('')
+            bloquear = true
+            return
         }
 
         if (!bloquear)
@@ -43,13 +52,13 @@
     <form id="formRegister" action="/user-register" method="post">
         <h2 class="text-center">Cadastro de Usuário</h2>
         <div class="form-group">
-            <input name="name" type="text" class="form-control" placeholder="Nome" required="required">
+            <input name="name" type="text" class="form-control" placeholder="Nome">
         </div>
         <div class="form-group">
             <input name="login" type="text" class="form-control" placeholder="Login" required="required">
         </div>
         <div class="form-group">
-            <input name="email" type="email" class="form-control" placeholder="E-mail" required="required">
+            <input name="email" type="email" class="form-control" placeholder="E-mail">
         </div>
         <div class="form-group">
             <input name="password" type="password" class="form-control" placeholder="Senha" required="required">
