@@ -91,11 +91,18 @@ class User extends Table
         $statement->bindParam(':password', $_login['password']);
         $statement->execute();
 
-        if ($statement->rowCount() > 0)
+        if ($statement->rowCount() > 0) {
+            $this->sessionRegister($statement->fetchObject());
             return true;
+        }
 
         return false;
     }
 
+    public function sessionRegister(\stdClass $entity): void
+    {
+        session_start();
+        $_SESSION['user'] = $entity;
+    }
 
 }

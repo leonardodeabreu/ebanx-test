@@ -10,17 +10,6 @@ class User extends Action
 
     public function login()
     {
-        if (count($_POST))
-        {
-            $user = [
-                "login" => $_POST['login'],
-                "password" => $_POST['password']
-            ];
-
-            $model = Container::getClass($this->model);
-            $validado = $model->verifyUser($user);
-        }
-
 
         $this->render('login');
     }
@@ -46,6 +35,28 @@ class User extends Action
 
         $this->view->sucess = true;
         $this->render('login');
+    }
+
+    public function validate()
+    {
+        $user = [
+            "login" => $_POST['login'],
+            "password" => $_POST['password']
+        ];
+
+        $model = Container::getClass($this->model);
+
+        if (!$model->verifyUser($user)) {
+            $this->render('login');
+            return;
+        }
+
+        $this->render('home');
+    }
+
+    public function home()
+    {
+
     }
 
 }
